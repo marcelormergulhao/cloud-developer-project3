@@ -18,7 +18,17 @@ before_install:
 
 
 install:
-  - docker-compose -f course-03/exercises/udacity-c3-deployment/docker/docker-compose-build.yaml build --parallel 
+  - docker-compose -f course-03/exercises/udacity-c3-deployment/project_3_solution/docker-compose-build.yaml build --parallel 
+  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+  - docker push $DOCKER_USERNAME/udacity-restapi-feed:latest
+  - docker push $DOCKER_USERNAME/udacity-restapi-user:latest
+  - docker push $DOCKER_USERNAME/udacity-frontend:latest
+  - docker push $DOCKER_USERNAME/udacity-reverseproxy:latest
+
+deploy:
+  provider: script
+  script: bash course-03/exercises/udacity-c3-deployment/project_3_solution/deploy.sh
+  
 
 
 
