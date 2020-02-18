@@ -23,7 +23,7 @@ install:
   - docker push "$DOCKER_USERNAME"/udacity-restapi-feed:latest
   - docker push "$DOCKER_USERNAME"/udacity-restapi-user:latest
   - docker push "$DOCKER_USERNAME"/udacity-frontend:latest
-  - docker push "$DOCKER_USERNAME"/udacity-reverseproxy:latest
+  - docker push "$DOCKER_USERNAME"/reverseproxy:latest
 
 deploy:
   provider: script
