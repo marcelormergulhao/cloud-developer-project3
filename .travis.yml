@@ -18,8 +18,8 @@ before_install:
 
 
 install:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin 
   - docker-compose -f course-03/exercises/udacity-c3-deployment/project_3_solution/docker-compose-build.yaml build --parallel 
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" -password-stdin 
   - docker push $DOCKER_USERNAME/udacity-restapi-feed:latest
   - docker push $DOCKER_USERNAME/udacity-restapi-user:latest
   - docker push $DOCKER_USERNAME/udacity-frontend:latest
